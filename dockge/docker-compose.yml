@@ -14,6 +14,8 @@ services:
     environment:
       # Tell Dockge where to find the stacks
       - DOCKGE_STACKS_DIR=/opt/stacks
+    networks:
+      - tutox-sms-net
 networks:
   tutox-sms-net:
     external: true

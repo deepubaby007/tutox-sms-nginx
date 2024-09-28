@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  tutox-http-service-1:
+    build: .
+    container_name: "tutox-http-service-1"
+    networks:
+      - "tutox-sms-net"
+    restart: "always"
+
+networks:
+  tutox-sms-net:
+    external: true

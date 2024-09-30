@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  tutox-sms-nginx:
+    image: nginx:latest
+    container_name: tutox-sms-nginx
+    restart: "always"
+    volumes:
+      - ./public_html:/public_html
+      - ./conf.d:/etc/nginx/conf.d
+      - ./dhparam:/etc/nginx/dhparam
+      - ./certbot/conf:/etc/nginx/ssl
+      - ./certbot/data:/usr/share/nginx/html/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - "tutox-sms-net"
+    depends_on:
+      - certbot
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email deepubaby007@gmail.com --agree-tos --no-eff-email -d reorldsystems.com
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/data:/usr/share/nginx/html/letsencrypt
+      - ./certbot/logs:/var/log/letsencrypt
+    networks:
+      - "tutox-sms-net"
+
+networks:
+  tutox-sms-net:
+    external: true

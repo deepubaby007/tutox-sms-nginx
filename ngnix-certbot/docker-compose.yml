@@ -20,7 +20,7 @@ services:
   certbot:
     image: certbot/certbot:latest
     container_name: certbot
-    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email deepubaby007@gmail.com --agree-tos --no-eff-email -d reorldsystems.com --force-renewal
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email deepubaby007@gmail.com --agree-tos --no-eff-email -d reorldsystems.com -d sms-keycloak.reorldsystems.com --force-renewal
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/data:/usr/share/nginx/html/letsencrypt

@@ -1,0 +1,5 @@
+Install certbot (non docker) in the vps
+Generate wildcard certifiacte using below command (generation and renewal)
+sudo certbot certonly --manual --preferred-challenges dns --email deepubaby007@gmail.com --agree-tos --no-eff-email -d reorldsystems.com -d *.reorldsystems.com
+Map generated certificate by using below volume configuration
+/etc/letsencrypt:/etc/nginx/ssl

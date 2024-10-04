@@ -7,8 +7,7 @@ services:
       - ./public_html:/public_html
       - ./conf.d:/etc/nginx/conf.d
       - ./dhparam:/etc/nginx/dhparam
-      - ./certbot/conf:/etc/nginx/ssl
-      - ./certbot/data:/usr/share/nginx/html/letsencrypt
+      - /etc/letsencrypt:/etc/nginx/ssl
     ports:
       - "80:80"
       - "443:443"
